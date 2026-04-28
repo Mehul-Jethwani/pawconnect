@@ -1,0 +1,38 @@
+.search-bar {
+  display: flex;
+  width: 100%;
+  max-width: 600px;
+  gap: 0.5rem;
+}
+
+.search-input-wrapper {
+  position: relative;
+  flex: 1;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-color);
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem;
+  border: 1px solid #ddd;
+  border-radius: var(--card-radius);
+  font-size: 1rem;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2);
+}
+
+.search-btn {
+  padding: 0.75rem 2rem;
+}

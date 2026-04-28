@@ -1,0 +1,34 @@
+.city-selector {
+  display: inline-block;
+  position: relative;
+}
+
+.city-select {
+  appearance: none;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--card-radius);
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
+  font-size: 1rem;
+  color: var(--text-color);
+  cursor: pointer;
+  min-width: 200px;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.city-select:focus {
+  border-color: rgba(74,222,128,0.4);
+  box-shadow: 0 0 0 3px rgba(74,222,128,0.12);
+}
+
+.city-selector::after {
+  content: '▼';
+  font-size: 0.8rem;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--hint-text);
+}

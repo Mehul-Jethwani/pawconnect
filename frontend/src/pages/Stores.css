@@ -1,0 +1,146 @@
+/* ─── Stores Page Shell ─── */
+.stores-page {
+  width: 100%;
+}
+
+/* ─── Stores Hero ─── */
+.stores-hero {
+  background: linear-gradient(135deg, var(--bg) 0%, var(--surface) 60%, var(--card) 100%);
+  padding: 5rem 2rem 4rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stores-hero::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: rgba(74, 222, 128, 0.10);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* page-hero-content is shared, so just override margin-bottom for stores */
+.stores-hero .page-hero-content {
+  margin-bottom: 0;
+}
+
+.stores-hero h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--text-color);
+  letter-spacing: -1px;
+  margin-bottom: 0.75rem;
+}
+
+.stores-hero p {
+  font-size: 1.1rem;
+  color: var(--muted-text);
+  margin-bottom: 2rem;
+}
+
+/* ─── City Filter Panel ─── */
+.stores-filter-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  max-width: 280px;
+  margin: 0 auto;
+  background: rgba(22, 27, 39, 0.78);
+  border-radius: 18px;
+  padding: 8px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.30);
+  border: 1px solid var(--accent-border);
+}
+
+/* Override glass-panel */
+.stores-filter-panel.glass-panel {
+  background: var(--surface) !important;
+  backdrop-filter: none !important;
+  border: 1px solid var(--accent-border) !important;
+}
+
+.stores-filter-panel .city-selector {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.stores-filter-panel .city-select {
+  border: none;
+  background: var(--surface);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23374151' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  height: 48px;
+  border-radius: 12px;
+  width: 100%;
+  padding: 0 2.5rem 0 1.25rem;
+  font-weight: 700;
+  color: var(--text-color);
+  cursor: pointer;
+  outline: none;
+  font-size: 0.95rem;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+/* Hide pseudo-element since we use background SVG */
+.stores-filter-panel .city-selector::after {
+  display: none;
+}
+
+/* ─── Stores Grid ─── */
+.stores-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
+}
+
+@media (max-width: 1100px) {
+  .stores-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 650px) {
+  .stores-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── No Results ─── */
+.no-results {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: var(--card);
+  border-radius: 20px;
+  color: var(--muted-text);
+  font-size: 1rem;
+  border: 1.5px dashed var(--border);
+  margin-top: 2rem;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .stores-hero {
+    padding: 3rem 1.25rem 2.5rem;
+  }
+
+  .stores-hero h1 {
+    font-size: 2rem;
+  }
+
+  .stores-filter-panel {
+    max-width: 100%;
+  }
+}

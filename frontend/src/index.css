@@ -1,0 +1,192 @@
+:root {
+  /* Midnight Green dark theme */
+  --bg: #0f1117;
+  --surface: #161b27;
+  --card: #1e2535;
+  --card-hover: #252d3d;
+
+  --accent: #4ade80;
+  --accent-hover: #22c55e;
+  --accent-dim: rgba(74, 222, 128, 0.12);
+  --accent-border: rgba(74, 222, 128, 0.25);
+
+  --text-color: #f0f4ff;     /* primary */
+  --muted-text: #9aa3b8;     /* secondary */
+  --hint-text: #5c6478;      /* tertiary */
+
+  --border: rgba(255,255,255,0.07);
+  --danger: #f87171;
+
+  /* Backwards-compat tokens used across app */
+  --primary-color: var(--accent);
+  --primary-grad: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+  --secondary-color: var(--surface);
+  --accent-blue: var(--accent);
+  --accent-blue-grad: var(--primary-grad);
+
+  --card-radius: 16px;
+  --glass: rgba(22, 27, 39, 0.72);
+  --glass-blur: blur(12px);
+  --glass-border: 1px solid var(--border);
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--card);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--card-hover);
+}
+
+html,
+body,
+#root {
+  font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg);
+  color: var(--text-color);
+}
+
+body {
+  line-height: 1.6;
+  overflow-x: hidden;
+  scrollbar-color: var(--card) var(--bg);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-color);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+p {
+  color: var(--muted-text);
+}
+
+/* App Wrapper */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.2s ease;
+  border: none;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: #0a1a10;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 24px rgba(74,222,128,0.08);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--accent);
+  border: 1px solid rgba(74, 222, 128, 0.4);
+}
+
+.btn-secondary:hover {
+  background-color: var(--accent-dim);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 24px rgba(74,222,128,0.06);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 1.5px solid rgba(74, 222, 128, 0.4);
+  color: var(--accent);
+}
+
+.btn-outline:hover {
+  background-color: var(--accent-dim);
+  color: var(--accent);
+}
+
+/* Page Containers */
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Utility Classes */
+.text-center { text-align: center; }
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 2rem; }
+.mt-4 { margin-top: 2rem; }
+
+/* Premium Global Spinner */
+.premium-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255, 255, 255, 0.08);
+  border-left-color: var(--primary-color);
+  border-radius: 50%;
+  animation: premium-spin 1s linear infinite;
+  margin: 2rem auto;
+}
+
+@keyframes premium-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* Glassmorphism Utility */
+.glass-panel {
+  background: var(--glass);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+}

@@ -1,0 +1,129 @@
+.navbar {
+  background-color: rgba(22, 27, 39, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  height: 72px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid var(--border);
+  transition: all 0.3s ease;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 2rem;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 3.5rem;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.navbar-logo:hover {
+  transform: scale(1.02);
+}
+
+.logo-icon {
+  font-size: 1.6rem;
+}
+
+.logo-text {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text-color);
+  letter-spacing: -0.5px;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav-links {
+  color: var(--muted-text);
+  padding: 0.6rem 1rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.nav-links:hover {
+  color: var(--text-color);
+  background: var(--accent-dim);
+}
+
+.nav-links.active {
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.nav-auth {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.nav-user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  background: rgba(30, 37, 53, 0.7);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.nav-btn {
+  padding: 0.6rem 1.4rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  border-radius: 12px;
+}
+
+.nav-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: var(--danger);
+  color: #0f1117;
+  font-size: 0.65rem;
+  font-weight: 800;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--surface);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+  animation: pulse-small 2s infinite;
+}
+
+@keyframes pulse-small {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}

@@ -1,0 +1,111 @@
+.store-card {
+  background-color: var(--card);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 0.5px solid var(--border);
+}
+
+.store-card:hover {
+  transform: translateY(-5px);
+  background-color: var(--card-hover);
+  border-color: var(--accent-border);
+  box-shadow: 0 4px 24px rgba(74,222,128,0.08);
+}
+
+.store-image-container {
+  height: 200px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.store-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.3s ease;
+}
+
+.store-card:hover .store-image {
+  transform: scale(1.05);
+}
+
+.store-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(30, 37, 53, 0.85);
+  backdrop-filter: blur(10px);
+  color: var(--text-color);
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+}
+
+.store-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.store-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.store-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 0;
+  flex: 1;
+}
+
+.store-rating {
+  background-color: rgba(74,222,128,0.12);
+  padding: 0.2rem 0.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  color: var(--accent);
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.store-details {
+  display: flex;
+  gap: 1rem;
+  color: var(--muted-text);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.store-city {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.store-btn {
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-left: 12px;
+  padding-right: 12px;
+  text-align: center;
+}

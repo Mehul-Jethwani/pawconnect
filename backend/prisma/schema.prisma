@@ -1,0 +1,293 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                    Int               @id @default(autoincrement())
+  name                  String
+  email                 String            @unique
+  password              String
+  role                  Role              @default(USER)
+  isApproved            Boolean           @default(false)
+  phone                 String?
+  profileImage          String?
+  createdAt             DateTime          @default(now())
+  notificationsSeenAt   DateTime?         // Tracks when user last "saw" their notifications
+  appointments          Appointment[]
+  boardingBookings      BoardingBooking[]
+  enquiries             PetEnquiry[]
+  serviceProviders      ServiceProvider[]
+  stores                Store[]
+  trainingSessions      TrainingSession[]
+  userPets              UserPet[]
+}
+
+model City {
+  id               String            @id @default(uuid())
+  name             String            @unique
+  imageUrl         String?
+  pets             Pet[]
+  serviceProviders ServiceProvider[]
+  stores           Store[]
+}
+
+model UserPet {
+  id                    String            @id @default(uuid())
+  name                  String
+  type                  PetType
+  gender                Gender
+  breed                 String
+  dateOfBirth           DateTime
+  imageUrl              String?
+  userId                Int
+  createdAt             DateTime          @default(now())
+  updatedAt             DateTime          @updatedAt
+  emergencyContactName  String?
+  emergencyContactPhone String?
+  lastVetVisit          DateTime?
+  medicalNotes          String?
+  vaccinated            Boolean           @default(false)
+  appointments          Appointment[]
+  boardingBookings      BoardingBooking[]
+  trainingSessions      TrainingSession[]
+  user                  User              @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+}
+
+model Store {
+  id          String  @id @default(uuid())
+  name        String
+  rating      Float?
+  imageUrl    String?
+  serviceType String?
+  address     String?
+  ownerId     Int
+  cityId      String
+  pets        Pet[]
+  city        City    @relation(fields: [cityId], references: [id])
+  owner       User    @relation(fields: [ownerId], references: [id])
+}
+
+model Pet {
+  id           String       @id @default(uuid())
+  name         String
+  breed        String
+  dateOfBirth  DateTime
+  type         PetType
+  gender       Gender
+  status       PetStatus    @default(AVAILABLE)
+  description  String?
+  imageUrl     String?
+  weight       Float?
+  contactPhone String?
+  locationCity String?
+  cityId       String
+  storeId      String
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  adoptedAt    DateTime?
+  adoptionFee  Int?
+  color        String?
+  healthNotes  String?
+  neutered     Boolean      @default(false)
+  vaccinated   Boolean      @default(false)
+  city         City         @relation(fields: [cityId], references: [id])
+  store        Store        @relation(fields: [storeId], references: [id])
+  enquiries    PetEnquiry[]
+
+  @@index([cityId])
+  @@index([storeId])
+  @@index([status])
+}
+
+model ServiceProvider {
+  id               String                 @id @default(uuid())
+  name             String
+  type             ServiceProviderType
+  description      String?
+  imageUrl         String?
+  contactPhone     String?
+  address          String?
+  cityId           String
+  userId           Int
+  specialization   String?
+  pricePerDay      Float?
+  pricePerSession  Float?
+  isSetupComplete  Boolean                @default(false)
+  createdAt        DateTime               @default(now())
+  updatedAt        DateTime               @updatedAt
+  appointments     Appointment[]
+  boardingBookings BoardingBooking[]
+  availabilities   ProviderAvailability[]
+  services         Service[]
+  city             City                   @relation(fields: [cityId], references: [id])
+  user             User                   @relation(fields: [userId], references: [id])
+  trainingSessions TrainingSession[]
+
+  @@index([cityId])
+  @@index([userId])
+}
+
+model Service {
+  id            String          @id @default(uuid())
+  name          String
+  price         Float
+  description   String?
+  availableDays String[]
+  providerId    String
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  appointments  Appointment[]
+  provider      ServiceProvider @relation(fields: [providerId], references: [id])
+
+  @@index([providerId])
+}
+
+model Appointment {
+  id         String            @id @default(uuid())
+  date       DateTime
+  status     AppointmentStatus @default(PENDING)
+  userId     Int
+  providerId String
+  serviceId  String
+  userPetId  String?
+  createdAt  DateTime          @default(now())
+  updatedAt  DateTime          @updatedAt
+  provider   ServiceProvider   @relation(fields: [providerId], references: [id])
+  service    Service           @relation(fields: [serviceId], references: [id])
+  user       User              @relation(fields: [userId], references: [id])
+  userPet    UserPet?          @relation(fields: [userPetId], references: [id])
+
+  @@index([userId])
+  @@index([providerId])
+  @@index([serviceId])
+  @@index([userPetId])
+}
+
+model PetEnquiry {
+  id         String           @id @default(uuid())
+  petId      String
+  userId     Int
+  question   String
+  answer     String?
+  createdAt  DateTime         @default(now())
+  answeredAt DateTime?
+  messages   EnquiryMessage[]
+  pet        Pet              @relation(fields: [petId], references: [id], onDelete: Cascade)
+  user       User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([petId])
+  @@index([userId])
+}
+
+model EnquiryMessage {
+  id         String     @id @default(uuid())
+  enquiryId  String
+  senderRole Role
+  message    String
+  createdAt  DateTime   @default(now())
+  enquiry    PetEnquiry @relation(fields: [enquiryId], references: [id], onDelete: Cascade)
+
+  @@index([enquiryId])
+}
+
+model BoardingBooking {
+  id          String            @id @default(uuid())
+  providerId  String
+  userId      Int
+  userPetId   String
+  startDate   DateTime
+  endDate     DateTime
+  totalDays   Float
+  pricePerDay Float
+  totalPrice  Float
+  status      AppointmentStatus @default(PENDING)
+  createdAt   DateTime          @default(now())
+  provider    ServiceProvider   @relation(fields: [providerId], references: [id])
+  user        User              @relation(fields: [userId], references: [id])
+  userPet     UserPet           @relation(fields: [userPetId], references: [id])
+
+  @@index([providerId])
+  @@index([userId])
+  @@index([userPetId])
+}
+
+model TrainingSession {
+  id              String            @id @default(uuid())
+  providerId      String
+  userId          Int
+  userPetId       String
+  sessionDate     DateTime
+  pricePerSession Float
+  status          AppointmentStatus @default(PENDING)
+  createdAt       DateTime          @default(now())
+  sessionTime     String?
+  provider        ServiceProvider   @relation(fields: [providerId], references: [id])
+  user            User              @relation(fields: [userId], references: [id])
+  userPet         UserPet           @relation(fields: [userPetId], references: [id])
+
+  @@index([providerId])
+  @@index([userId])
+  @@index([userPetId])
+}
+
+model ProviderAvailability {
+  id                String          @id @default(uuid())
+  serviceProviderId String
+  dayOfWeek         Int
+  startTime         String
+  endTime           String
+  isBlocked         Boolean         @default(false)
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+  provider          ServiceProvider @relation(fields: [serviceProviderId], references: [id], onDelete: Cascade)
+
+  @@index([serviceProviderId])
+}
+
+enum Role {
+  USER
+  STORE_OWNER
+  SERVICE_PROVIDER
+  ADMIN
+}
+
+enum PetType {
+  DOG
+  CAT
+  BIRD
+  HAMSTER
+  GUINEA_PIG
+  RABBIT
+}
+
+enum Gender {
+  MALE
+  FEMALE
+}
+
+enum PetStatus {
+  AVAILABLE
+  ADOPTED
+  RESERVED
+}
+
+enum ServiceProviderType {
+  VET
+  GROOMING
+  TRAINING
+  BOARDING
+}
+
+enum AppointmentStatus {
+  PENDING
+  ACCEPTED
+  REJECTED
+  CANCELLED
+}

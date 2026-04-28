@@ -1,0 +1,71 @@
+# ── Dependencies ──
+node_modules/
+
+# ── Build outputs ──
+build/
+dist/
+.next/
+
+# ── Environment variables (NEVER commit these) ──
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+.env*.local
+
+# ── Logs ──
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ── OS junk ──
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Editor junk ──
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# ── Temp / backup files ──
+*.tmp
+*.temp
+*.bak
+*.backup
+*.orig
+*_old.*
+*_backup.*
+*_copy.*
+*_temp.*
+Copy of *
+
+# ── Sensitive / credential files ──
+*.txt
+users.json
+credentials*.json
+accounts*.json
+formatted_credentials*
+loginDetails*
+
+# ── Test coverage ──
+coverage/
+.nyc_output/
+
+# ── Prisma ──
+prisma/migrations/
+
+# ── Python ──
+__pycache__/
+*.pyc
+*.pyo
+
+# ── Zip / archive artifacts ──
+*.zip
+*.tar.gz
