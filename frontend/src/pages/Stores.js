@@ -6,7 +6,7 @@ import './Stores.css';
 
 // Page to view and filter pet stores
 const Stores = () => {
-  const [city, setCity] = useState('Ahmedabad');
+  const [city, setCity] = useState('Bangalore');
   const [filteredStores, setFilteredStores] = useState([]);
 
   useEffect(() => {

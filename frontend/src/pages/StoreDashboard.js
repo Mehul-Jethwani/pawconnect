@@ -119,7 +119,7 @@ const StoreDashboard = () => {
     if (!text?.trim()) return;
     setReplyLoading(true);
     try {
-      await api.post(`/enquiry/${enquiryId}/messages`, { text });
+      await api.post(`/enquiry/${enquiryId}/messages`, { message: text });
       fetchEnquiryMessages(enquiryId);
       setReplyText({ ...replyText, [enquiryId]: '' });
     } catch (err) { alert('Failed to send reply'); }
@@ -137,7 +137,7 @@ const StoreDashboard = () => {
     let interval;
     if (activeTab === 'enquiries' && selectedEnquiryId) {
       fetchEnquiryMessages(selectedEnquiryId);
-      interval = setInterval(() => fetchEnquiryMessages(selectedEnquiryId), 15000);
+      interval = setInterval(() => fetchEnquiryMessages(selectedEnquiryId), 5000);
     }
     return () => clearInterval(interval);
   }, [activeTab, selectedEnquiryId]);
@@ -547,9 +547,18 @@ const StoreDashboard = () => {
                     {messages.map(msg => {
                       const isMe = msg.senderRole === 'STORE_OWNER';
                       return (
-                        <div key={msg.id} style={{ alignSelf: isMe ? 'flex-end' : 'flex-start', maxWidth: '80%', background: isMe ? 'rgba(74,222,128,0.15)' : 'var(--card)', color: isMe ? 'var(--accent)' : 'var(--text-color)', padding: '0.8rem 1.2rem', borderRadius: isMe ? '12px 12px 0 12px' : '12px 12px 12px 0', border: isMe ? '1px solid rgba(74,222,128,0.25)' : '1px solid var(--border)', boxShadow: '0 2px 12px rgba(0,0,0,0.20)' }}>
-                          <p style={{ margin: 0 }}>{msg.message}</p>
-                          <span style={{ fontSize: '0.65rem', color: 'var(--hint-text)', display: 'block', marginTop: '0.3rem', textAlign: isMe ? 'right' : 'left' }}>{new Date(msg.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                        <div key={msg.id} style={{ 
+                          alignSelf: isMe ? 'flex-end' : 'flex-start', 
+                          maxWidth: '80%', 
+                          background: isMe ? 'var(--accent)' : 'var(--card)', 
+                          color: isMe ? '#0a1a10' : 'var(--text-color)', 
+                          padding: '0.8rem 1.2rem', 
+                          borderRadius: isMe ? '12px 12px 0 12px' : '12px 12px 12px 0', 
+                          border: isMe ? '1px solid var(--accent)' : '1px solid var(--border)', 
+                          boxShadow: '0 2px 12px rgba(0,0,0,0.20)' 
+                        }}>
+                          <p style={{ margin: 0, fontWeight: isMe ? 600 : 400 }}>{msg.message}</p>
+                          <span style={{ fontSize: '0.65rem', color: isMe ? 'rgba(10,26,16,0.6)' : 'var(--hint-text)', display: 'block', marginTop: '0.3rem', textAlign: isMe ? 'right' : 'left' }}>{new Date(msg.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
                         </div>
                       );
                     })}

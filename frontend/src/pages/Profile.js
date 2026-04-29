@@ -225,18 +225,18 @@ const Profile = () => {
   return (
     <div className="sd-wrapper" style={{background: 'var(--bg)', minHeight: '100vh', paddingBottom: '4rem'}}>
       {/* ── Premium Banner ── */}
-      <div className="sd-banner" style={{background: 'linear-gradient(135deg, var(--bg), var(--card))', height: '220px', borderRadius: '0 0 2rem 2rem', position: 'relative'}}>
-        <div className="sd-banner-inner" style={{maxWidth: '1200px', margin: '0 auto', padding: '2rem', display: 'flex', alignItems: 'center', gap: '2rem'}}>
-          <div className="sd-banner-avatar" style={{fontSize: '3.5rem', background: 'rgba(74,222,128,0.10)', border: '1px solid rgba(74,222,128,0.25)', width: '90px', height: '90px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '24px', boxShadow: '0 8px 32px rgba(0,0,0,0.35)'}}>🐾</div>
+      <div className="sd-banner" style={{background: 'linear-gradient(135deg, var(--bg), var(--card))', height: '160px', borderRadius: '0 0 1.5rem 1.5rem', position: 'relative'}}>
+        <div className="sd-banner-inner" style={{maxWidth: '1200px', margin: '0 auto', padding: '1.5rem 2rem', display: 'flex', alignItems: 'center', gap: '1.5rem'}}>
+          <div className="sd-banner-avatar" style={{fontSize: '2.5rem', background: 'rgba(74,222,128,0.10)', border: '1px solid rgba(74,222,128,0.25)', width: '70px', height: '70px', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: '20px', boxShadow: '0 8px 32px rgba(0,0,0,0.35)'}}>🐾</div>
           <div className="sd-banner-info">
-            <h1 style={{color: 'var(--text-color)', fontSize: '2.5rem', fontWeight: 800, textShadow: '0 2px 10px rgba(0,0,0,0.35)', margin: 0}}>Welcome, {user.name}!</h1>
-            <div className="sd-banner-city" style={{marginTop: '0.5rem'}}>
-              <span className="sd-city-pill" style={{background: 'rgba(74,222,128,0.10)', border: '1px solid rgba(74,222,128,0.25)', color: 'var(--accent)'}}>Pet Parent Passport</span>
-              <span className="sd-addr" style={{color: 'var(--muted-text)'}}>{user.email}</span>
+            <h1 style={{color: 'var(--text-color)', fontSize: '1.8rem', fontWeight: 800, textShadow: '0 2px 10px rgba(0,0,0,0.35)', margin: 0}}>Welcome, {user.name}!</h1>
+            <div className="sd-banner-city" style={{marginTop: '0.25rem'}}>
+              <span className="sd-city-pill" style={{background: 'rgba(74,222,128,0.10)', border: '1px solid rgba(74,222,128,0.25)', color: 'var(--accent)', padding: '4px 10px', fontSize: '0.75rem'}}>Pet Parent Passport</span>
+              <span className="sd-addr" style={{color: 'var(--muted-text)', fontSize: '0.85rem'}}>{user.email}</span>
             </div>
           </div>
           <div style={{marginLeft: 'auto'}}>
-             <button className="sd-add-btn bounce-in" style={{background: 'rgba(74,222,128,0.12)', backdropFilter: 'blur(10px)', border: '1px solid rgba(74,222,128,0.25)', padding: '0.75rem 1.5rem', fontSize: '0.95rem', color: 'var(--accent)'}} onClick={() => setIsProfileModalOpen(true)}>⚙️ Edit Account</button>
+             <button className="sd-add-btn bounce-in" style={{background: 'rgba(74,222,128,0.12)', backdropFilter: 'blur(10px)', border: '1px solid rgba(74,222,128,0.25)', padding: '0.5rem 1.25rem', fontSize: '0.85rem', color: 'var(--accent)'}} onClick={() => setIsProfileModalOpen(true)}>⚙️ Edit Account</button>
           </div>
         </div>
       </div>
@@ -245,37 +245,37 @@ const Profile = () => {
         
         {/* ── Urgent Action Hero Card (The Next Appointment) ── */}
         {nextAppointment ? (
-           <div className="bounce-in" style={{background: 'var(--card)', borderRadius: '24px', padding: '2rem', boxShadow: '0 20px 40px -10px rgba(0,0,0,0.28)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '2rem', marginBottom: '3rem', border: '0.5px solid var(--border)', borderLeft: '3px solid var(--accent)'}}>
+           <div className="bounce-in" style={{background: 'var(--card)', borderRadius: '20px', padding: '1.25rem 1.5rem', boxShadow: '0 20px 40px -10px rgba(0,0,0,0.28)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1.5rem', marginBottom: '2rem', border: '0.5px solid var(--border)', borderLeft: '3px solid var(--accent)'}}>
               <div>
-                <p style={{color: 'var(--accent)', fontWeight: 700, fontSize: '0.9rem', margin: '0 0 0.5rem 0', textTransform: 'uppercase', letterSpacing: '1px'}}>Next Upcoming Priority</p>
-                <h2 style={{fontSize: '1.8rem', color: 'var(--text-color)', margin: '0 0 0.5rem 0', fontWeight: 800}}>{nextAppointment.service.name} for {nextAppointment.userPet?.name || 'Pet'}</h2>
-                <div style={{display: 'flex', gap: '1.5rem', fontSize: '0.95rem', color: 'var(--muted-text)', alignItems: 'center'}}>
+                <p style={{color: 'var(--accent)', fontWeight: 700, fontSize: '0.75rem', margin: '0 0 0.25rem 0', textTransform: 'uppercase', letterSpacing: '1px'}}>Next Upcoming Priority</p>
+                <h2 style={{fontSize: '1.4rem', color: 'var(--text-color)', margin: '0 0 0.25rem 0', fontWeight: 800}}>{nextAppointment.service.name} for {nextAppointment.userPet?.name || 'Pet'}</h2>
+                <div style={{display: 'flex', gap: '1.25rem', fontSize: '0.85rem', color: 'var(--muted-text)', alignItems: 'center'}}>
                   <span style={{display: 'flex', alignItems: 'center', gap: '0.4rem'}}>🏥 <strong>{nextAppointment.provider.name}</strong></span>
-                  <span style={{display: 'flex', alignItems: 'center', gap: '0.4rem'}}>📅 {new Date(nextAppointment.date).toLocaleDateString('en-IN', {weekday: 'long', month: 'long', day: 'numeric'})} at {new Date(nextAppointment.date).toLocaleTimeString('en-IN', {hour: '2-digit', minute: '2-digit'})}</span>
+                  <span style={{display: 'flex', alignItems: 'center', gap: '0.4rem'}}>📅 {new Date(nextAppointment.date).toLocaleDateString('en-IN', {weekday: 'short', month: 'short', day: 'numeric'})} at {new Date(nextAppointment.date).toLocaleTimeString('en-IN', {hour: '2-digit', minute: '2-digit'})}</span>
                 </div>
               </div>
               <div style={{textAlign: 'right'}}>
-                <div style={{fontSize: '1.5rem', fontWeight: 800, color: 'var(--accent)', marginBottom: '0.5rem'}}>{getCountdown(nextAppointment.date, nextAppointment.status)}</div>
-                <span className={`status-pill ${nextAppointment.status.toLowerCase()}`} style={{fontSize: '0.8rem', padding: '6px 16px', borderRadius: '20px'}}>{nextAppointment.status}</span>
+                <div style={{fontSize: '1.2rem', fontWeight: 800, color: 'var(--accent)', marginBottom: '0.25rem'}}>{getCountdown(nextAppointment.date, nextAppointment.status)}</div>
+                <span className={`status-pill ${nextAppointment.status.toLowerCase()}`} style={{fontSize: '0.7rem', padding: '4px 12px', borderRadius: '20px'}}>{nextAppointment.status}</span>
               </div>
            </div>
         ) : (
-           <div className="bounce-in" style={{background: 'var(--card)', borderRadius: '24px', padding: '2rem', boxShadow: '0 10px 20px rgba(0,0,0,0.22)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '3rem', border: '0.5px solid var(--border)'}}>
+           <div className="bounce-in" style={{background: 'var(--card)', borderRadius: '20px', padding: '1.25rem 1.5rem', boxShadow: '0 10px 20px rgba(0,0,0,0.22)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2rem', border: '0.5px solid var(--border)'}}>
               <div>
-                <h2 style={{fontSize: '1.5rem', color: 'var(--text-color)', margin: '0 0 0.5rem 0'}}>No Immediate Appointments.</h2>
-                <p style={{color: 'var(--muted-text)', margin: 0}}>Your schedule is clear! Enjoy the downtime with your pets.</p>
+                <h2 style={{fontSize: '1.3rem', color: 'var(--text-color)', margin: '0 0 0.25rem 0'}}>No Immediate Appointments.</h2>
+                <p style={{color: 'var(--muted-text)', margin: 0, fontSize: '0.9rem'}}>Your schedule is clear! Enjoy the downtime with your pets.</p>
               </div>
-              <span style={{fontSize: '3rem', opacity: 0.5}}>🌿</span>
+              <span style={{fontSize: '2.5rem', opacity: 0.5}}>🌿</span>
            </div>
         )}
 
-        <div style={{display: 'grid', gridTemplateColumns: '1fr 350px', gap: '3rem'}}>
+        <div style={{display: 'grid', gridTemplateColumns: '1fr 300px', gap: '2rem'}}>
           
           {/* ── Left Column: Pet Family Cards ── */}
           <div>
-            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem'}}>
-              <h2 style={{fontSize: '1.75rem', fontWeight: 800, color: 'var(--text-color)'}}>The Family Library</h2>
-              <button className="sd-add-btn-sm" style={{background: 'var(--accent)', color: '#0a1a10'}} onClick={() => { setIsPetModalOpen(true); setEditingPet(null); }}>+ Add Pet</button>
+            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem'}}>
+              <h2 style={{fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-color)'}}>The Family Library</h2>
+              <button className="sd-add-btn-sm" style={{background: 'var(--accent)', color: '#0a1a10', padding: '0.4rem 1rem', fontSize: '0.8rem'}} onClick={() => { setIsPetModalOpen(true); setEditingPet(null); }}>+ Add Pet</button>
             </div>
 
             {pets.length === 0 ? (
@@ -286,34 +286,34 @@ const Profile = () => {
                   <button className="btn btn-primary" onClick={() => setIsPetModalOpen(true)}>Add Your First Pet</button>
                 </div>
             ) : (
-                <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1.5rem'}}>
+                <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '1.25rem'}}>
                   {pets.map((pet, idx) => (
-                    <div key={pet.id} className="bounce-in" style={{background: 'var(--card)', borderRadius: '24px', padding: '1.5rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.22)', border: '0.5px solid var(--border)', position: 'relative', transition: 'transform 0.2s', cursor: 'default', animationDelay: `${idx * 0.1}s`}}>
-                      <div style={{display: 'flex', gap: '1.25rem', alignItems: 'center', marginBottom: '1rem'}}>
-                        <div style={{width: '70px', height: '70px', borderRadius: '20px', background: 'var(--surface)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', boxShadow: '0 4px 14px rgba(0,0,0,0.25)', border: '1px solid var(--border)'}}>
-                          {pet.imageUrl ? <img src={pet.imageUrl} alt={pet.name} style={{width: '100%', height: '100%', objectFit: 'cover'}} /> : <span style={{fontSize: '2rem'}}>🐾</span>}
+                    <div key={pet.id} className="bounce-in" style={{background: 'var(--card)', borderRadius: '20px', padding: '1.25rem', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.22)', border: '0.5px solid var(--border)', position: 'relative', transition: 'transform 0.2s', cursor: 'default', animationDelay: `${idx * 0.1}s`}}>
+                      <div style={{display: 'flex', gap: '1rem', alignItems: 'center', marginBottom: '0.75rem'}}>
+                        <div style={{width: '60px', height: '60px', borderRadius: '16px', background: 'var(--surface)', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', boxShadow: '0 4px 14px rgba(0,0,0,0.25)', border: '1px solid var(--border)'}}>
+                          {pet.imageUrl ? <img src={pet.imageUrl} alt={pet.name} style={{width: '100%', height: '100%', objectFit: 'cover'}} /> : <span style={{fontSize: '1.5rem'}}>🐾</span>}
                         </div>
                         <div>
-                          <h3 style={{margin: '0 0 0.2rem 0', fontSize: '1.35rem', color: 'var(--text-color)', fontWeight: 800}}>{pet.name}</h3>
-                          <div style={{display: 'flex', gap: '5px', flexWrap: 'wrap'}}>
-                            <span style={{background: 'rgba(74,222,128,0.12)', color: 'var(--accent)', border: '1px solid rgba(74,222,128,0.25)', padding: '2px 8px', borderRadius: '12px', fontSize: '0.65rem', fontWeight: 700}}>{pet.type}</span>
-                            {pet.vaccinated && <span style={{background: 'rgba(74,222,128,0.12)', color: 'var(--accent)', border: '1px solid rgba(74,222,128,0.25)', padding: '2px 8px', borderRadius: '12px', fontSize: '0.65rem', fontWeight: 700}}>🛡️ Vaccinated</span>}
+                          <h3 style={{margin: '0 0 0.1rem 0', fontSize: '1.15rem', color: 'var(--text-color)', fontWeight: 800}}>{pet.name}</h3>
+                          <div style={{display: 'flex', gap: '4px', flexWrap: 'wrap'}}>
+                            <span style={{background: 'rgba(74,222,128,0.12)', color: 'var(--accent)', border: '1px solid rgba(74,222,128,0.25)', padding: '2px 6px', borderRadius: '10px', fontSize: '0.6rem', fontWeight: 700}}>{pet.type}</span>
+                            {pet.vaccinated && <span style={{background: 'rgba(74,222,128,0.12)', color: 'var(--accent)', border: '1px solid rgba(74,222,128,0.25)', padding: '2px 6px', borderRadius: '10px', fontSize: '0.6rem', fontWeight: 700}}>🛡️ Vaccinated</span>}
                           </div>
                         </div>
                       </div>
-                      <div style={{background: 'var(--surface)', border: '1px solid var(--border)', padding: '1rem', borderRadius: '16px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginBottom: '1rem'}}>
+                      <div style={{background: 'var(--surface)', border: '1px solid var(--border)', padding: '0.75rem', borderRadius: '12px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginBottom: '0.75rem'}}>
                         <div>
-                          <p style={{fontSize: '0.65rem', color: 'var(--hint-text)', margin: '0 0 0.1rem 0', textTransform: 'uppercase', fontWeight: 700}}>Breed</p>
-                          <p style={{fontSize: '0.8rem', color: 'var(--text-color)', margin: 0, fontWeight: 600}}>{pet.breed || 'Unknown'}</p>
+                          <p style={{fontSize: '0.6rem', color: 'var(--hint-text)', margin: '0 0 0.1rem 0', textTransform: 'uppercase', fontWeight: 700}}>Breed</p>
+                          <p style={{fontSize: '0.75rem', color: 'var(--text-color)', margin: 0, fontWeight: 600}}>{pet.breed || 'Unknown'}</p>
                         </div>
                         <div>
-                          <p style={{fontSize: '0.65rem', color: 'var(--hint-text)', margin: '0 0 0.1rem 0', textTransform: 'uppercase', fontWeight: 700}}>Weight</p>
-                          <p style={{fontSize: '0.8rem', color: 'var(--text-color)', margin: 0, fontWeight: 600}}>{pet.weight ? `${pet.weight} kg` : '--'}</p>
+                          <p style={{fontSize: '0.6rem', color: 'var(--hint-text)', margin: '0 0 0.1rem 0', textTransform: 'uppercase', fontWeight: 700}}>Weight</p>
+                          <p style={{fontSize: '0.75rem', color: 'var(--text-color)', margin: 0, fontWeight: 600}}>{pet.weight ? `${pet.weight} kg` : '--'}</p>
                         </div>
                       </div>
                       <div style={{display: 'flex', gap: '0.5rem'}}>
-                        <button style={{flex: 1, background: 'var(--surface)', border: '1px solid var(--border)', padding: '0.6rem', borderRadius: '12px', color: 'var(--muted-text)', fontWeight: 600, cursor: 'pointer', transition: 'background 0.2s', fontSize: '0.8rem'}} onClick={() => openEditPet(pet)}>Edit Family Member</button>
-                        <button style={{background: 'rgba(248,113,113,0.14)', border: '1px solid rgba(248,113,113,0.25)', padding: '0.6rem', borderRadius: '12px', color: 'var(--danger)', fontWeight: 600, cursor: 'pointer'}} onClick={() => handleDeletePet(pet.id)}>🗑️</button>
+                        <button style={{flex: 1, background: 'var(--surface)', border: '1px solid var(--border)', padding: '0.5rem', borderRadius: '10px', color: 'var(--muted-text)', fontWeight: 600, cursor: 'pointer', transition: 'background 0.2s', fontSize: '0.75rem'}} onClick={() => openEditPet(pet)}>Edit Info</button>
+                        <button style={{background: 'rgba(248,113,113,0.14)', border: '1px solid rgba(248,113,113,0.25)', padding: '0.5rem', borderRadius: '10px', color: 'var(--danger)', fontWeight: 600, cursor: 'pointer', fontSize: '0.75rem'}} onClick={() => handleDeletePet(pet.id)}>🗑️</button>
                       </div>
                     </div>
                   ))}
@@ -323,8 +323,8 @@ const Profile = () => {
 
           {/* ── Right Column: Timeline History ── */}
           <div>
-             <h2 style={{fontSize: '1.5rem', fontWeight: 800, color: 'var(--text-color)', marginBottom: '1.5rem'}}>Service History</h2>
-             <div style={{background: 'var(--card)', borderRadius: '24px', padding: '2rem', boxShadow: '0 10px 25px rgba(0,0,0,0.22)', border: '0.5px solid var(--border)'}}>
+             <h2 style={{fontSize: '1.3rem', fontWeight: 800, color: 'var(--text-color)', marginBottom: '1.25rem'}}>Service History</h2>
+             <div style={{background: 'var(--card)', borderRadius: '20px', padding: '1.25rem', boxShadow: '0 10px 25px rgba(0,0,0,0.22)', border: '0.5px solid var(--border)'}}>
               {appointments.length === 0 ? (
                   <p style={{textAlign: 'center', color: 'var(--muted-text)', margin: 0}}>Timeline is completely empty.</p>
               ) : (

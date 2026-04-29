@@ -1,11 +1,11 @@
 .pet-details-page {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 16px 2rem 2rem 2rem;
 }
 
 .pet-details-header {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .back-link {
@@ -36,13 +36,12 @@
 
 .pet-main-image {
   width: 100%;
-  height: 100%;
+  height: 420px;
   object-fit: cover;
-  min-height: 500px;
 }
 
 .pet-info-section {
-  padding: 3rem;
+  padding: 1.5rem 2rem;
   display: flex;
   flex-direction: column;
 }
@@ -55,7 +54,7 @@
 }
 
 .pet-title-row h1 {
-  font-size: 2.5rem;
+  font-size: 28px;
   margin: 0;
 }
 
@@ -71,10 +70,10 @@
 .pet-meta {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
   color: var(--muted-text);
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
   flex-wrap: wrap;
 }
 
@@ -95,48 +94,55 @@
 .pet-stats-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  gap: 8px;
+  margin-bottom: 1.25rem;
 }
 
 .info-box {
   background: var(--surface);
   border: 1px solid var(--border);
   color: var(--text-color);
-  padding: 12px;
+  padding: 10px 12px;
   border-radius: 10px;
 }
 
 .info-label {
   display: block;
-  font-size: 14px;
+  font-size: 11px;
   color: var(--hint-text);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.15rem;
 }
 
 .info-value {
   display: block;
-  font-size: 16px;
+  font-size: 14px;
   color: var(--text-color);
   font-weight: 600;
 }
 
 .pet-description-section {
-  margin-bottom: 2.5rem;
+  margin-top: 12px;
+  margin-bottom: 1.25rem;
 }
 
 .pet-description-section h3 {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
 }
 
 .pet-description {
   color: var(--muted-text);
-  line-height: 1.7;
+  line-height: 1.5;
+  font-size: 14px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .pet-contact-card {
   background: var(--card);
-  padding: 2rem;
+  padding: 1.25rem;
   border-radius: 12px;
   border: 0.5px solid var(--border);
   margin-top: auto;
@@ -144,9 +150,9 @@
 }
 
 .pet-contact-card h3 {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
   color: var(--text-color);
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .contact-details {

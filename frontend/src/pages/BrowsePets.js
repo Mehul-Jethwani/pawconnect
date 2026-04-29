@@ -19,7 +19,7 @@ const BrowsePets = () => {
   const [pets, setPets] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const [cityFilter, setCityFilter] = useState('Ahmedabad');
+  const [cityFilter, setCityFilter] = useState('Bangalore');
   const [selectedTypes, setSelectedTypes] = useState([]); // Array of strings
   const [searchQuery, setSearchQuery] = useState('');
 

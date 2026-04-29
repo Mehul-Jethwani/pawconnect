@@ -10,7 +10,7 @@ import './Home.css';
 
 // Home page displaying featured pets and services
 const Home = () => {
-  const [city, setCity] = useState('Ahmedabad');
+  const [city, setCity] = useState('Bangalore');
   const [featuredPets, setFeaturedPets] = useState([]);
   const [featuredServices, setFeaturedServices] = useState([]);
   const [loading, setLoading] = useState(true);

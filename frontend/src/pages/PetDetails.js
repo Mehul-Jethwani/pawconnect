@@ -93,7 +93,7 @@ const PetDetails = () => {
   useEffect(() => {
     let interval;
     if (enquiryThread) {
-      interval = setInterval(() => fetchMessages(enquiryThread.id), 15000);
+      interval = setInterval(() => fetchMessages(enquiryThread.id), 5000);
     }
     return () => clearInterval(interval);
   }, [enquiryThread]);
@@ -102,7 +102,7 @@ const PetDetails = () => {
     e.preventDefault();
     if (!followUpText.trim() || !enquiryThread) return;
     try {
-      await API.post(`/enquiry/${enquiryThread.id}/messages`, { text: followUpText });
+      await API.post(`/enquiry/${enquiryThread.id}/messages`, { message: followUpText });
       setFollowUpText('');
       fetchMessages(enquiryThread.id);
     } catch (err) { alert('Failed to send message'); }
@@ -147,7 +147,7 @@ const PetDetails = () => {
         <div className="pet-info-section">
           <div className="pet-title-row">
             <h1>{pet.name}</h1>
-            <div className="pet-badges" style={{display: 'flex', gap: '10px', flexWrap: 'wrap'}}>
+            <div className="pet-badges" style={{display: 'flex', gap: '8px', flexWrap: 'wrap'}}>
               <span className="pet-badge status-badge" style={{
                 backgroundColor: pet.status === 'AVAILABLE' ? 'rgba(74,222,128,0.15)' : 'rgba(255,255,255,0.05)',
                 border: pet.status === 'AVAILABLE' ? '1px solid rgba(74,222,128,0.25)' : '1px solid var(--border)',
@@ -241,9 +241,18 @@ const PetDetails = () => {
                     {messages.map(msg => {
                       const isMe = msg.senderRole === 'USER';
                       return (
-                        <div key={msg.id} style={{ alignSelf: isMe ? 'flex-end' : 'flex-start', maxWidth: '85%', background: isMe ? 'var(--card)' : 'rgba(74,222,128,0.15)', border: isMe ? '1px solid var(--border)' : '1px solid rgba(74,222,128,0.25)', color: isMe ? 'var(--text-color)' : 'var(--accent)', padding: '0.7rem 1rem', borderRadius: isMe ? '12px 12px 0 12px' : '12px 12px 12px 0' }}>
-                          <p style={{ margin: 0, fontSize: '0.95rem' }}>{msg.message}</p>
-                          <span style={{ fontSize: '0.6rem', color: 'var(--hint-text)', display: 'block', marginTop: '0.2rem', textAlign: isMe ? 'right' : 'left' }}>{new Date(msg.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                        <div key={msg.id} style={{ 
+                          alignSelf: isMe ? 'flex-end' : 'flex-start', 
+                          maxWidth: '85%', 
+                          background: isMe ? 'var(--accent)' : 'var(--card)', 
+                          color: isMe ? '#0a1a10' : 'var(--text-color)', 
+                          padding: '0.7rem 1rem', 
+                          borderRadius: isMe ? '12px 12px 0 12px' : '12px 12px 12px 0',
+                          border: isMe ? '1px solid var(--accent)' : '1px solid var(--border)',
+                          boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
+                        }}>
+                          <p style={{ margin: 0, fontSize: '0.95rem', fontWeight: isMe ? 600 : 400 }}>{msg.message}</p>
+                          <span style={{ fontSize: '0.6rem', color: isMe ? 'rgba(10,26,16,0.6)' : 'var(--hint-text)', display: 'block', marginTop: '0.2rem', textAlign: isMe ? 'right' : 'left' }}>{new Date(msg.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
                         </div>
                       );
                     })}
@@ -267,7 +276,7 @@ const PetDetails = () => {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <p className="contact-note" style={{ margin: 0, fontSize: '0.85rem' }}>Your enquiry goes directly to the store owner. They will reply as soon as possible.</p>
                 
-                {currentUser?.role === 'USER' ? (
+                {currentUser ? (
                   <>
                     {enquiryMessage && (
                       <div style={{ padding: '0.8rem', borderRadius: '8px', border: `1px solid ${enquiryMessage.includes('sent') ? 'rgba(74,222,128,0.25)' : 'rgba(248,113,113,0.25)'}`, background: enquiryMessage.includes('sent') ? 'rgba(74,222,128,0.10)' : 'rgba(248,113,113,0.14)', color: enquiryMessage.includes('sent') ? 'var(--accent)' : 'var(--danger)', fontSize: '0.85rem' }}>

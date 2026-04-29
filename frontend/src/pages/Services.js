@@ -10,7 +10,7 @@ const Services = () => {
   const [services, setServices] = useState([]);
 
   // Filters State
-  const [cityFilter, setCityFilter] = useState('Ahmedabad');
+  const [cityFilter, setCityFilter] = useState('Bangalore');
   const [activeTab, setActiveTab] = useState('All Services');
   const [searchQuery, setSearchQuery] = useState('');
 

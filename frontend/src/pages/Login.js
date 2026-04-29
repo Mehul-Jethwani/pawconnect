@@ -118,12 +118,12 @@ const Login = () => {
           <div style={{ marginTop: '2rem', paddingTop: '1.5rem', borderTop: '1px dashed var(--border)' }}>
             <p style={{ fontSize: '0.85rem', color: 'var(--hint-text)', marginBottom: '1rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em', textAlign: 'center' }}>Quick Login (Demo)</p>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.8rem' }}>
-              <button onClick={() => handleQuickLogin('user@ahmedabad.com', 'password123')} style={quickBtnStyle}>👤 User</button>
-              <button onClick={() => handleQuickLogin('owner_store1ahmedabad@pawconnect.com', 'password123')} style={quickBtnStyle}>🏪 Pet Store</button>
-              <button onClick={() => handleQuickLogin('vet1@ahmedabad.com', 'password123')} style={quickBtnStyle}>🩺 Vet</button>
-              <button onClick={() => handleQuickLogin('training1@ahmedabad.com', 'password123')} style={quickBtnStyle}>🦮 Training</button>
-              <button onClick={() => handleQuickLogin('grooming1@ahmedabad.com', 'password123')} style={quickBtnStyle}>✂️ Grooming</button>
-              <button onClick={() => handleQuickLogin('boarding1@ahmedabad.com', 'password123')} style={quickBtnStyle}>🏠 Boarding</button>
+              <button onClick={() => handleQuickLogin('user@bangalore.com', 'password123')} style={quickBtnStyle}>👤 User</button>
+              <button onClick={() => handleQuickLogin('owner_store1bangalore@pawconnect.com', 'password123')} style={quickBtnStyle}>🏪 Pet Store</button>
+              <button onClick={() => handleQuickLogin('vet1@bangalore.com', 'password123')} style={quickBtnStyle}>🩺 Vet</button>
+              <button onClick={() => handleQuickLogin('training1@bangalore.com', 'password123')} style={quickBtnStyle}>🦮 Training</button>
+              <button onClick={() => handleQuickLogin('grooming1@bangalore.com', 'password123')} style={quickBtnStyle}>✂️ Grooming</button>
+              <button onClick={() => handleQuickLogin('boarding1@bangalore.com', 'password123')} style={quickBtnStyle}>🏠 Boarding</button>
               <button onClick={() => handleQuickLogin('admin@pawconnect.com', 'password123')} style={{ ...quickBtnStyle, gridColumn: 'span 2', backgroundColor: 'rgba(255,255,255,0.06)' }}>🔒 Admin</button>
             </div>
           </div>

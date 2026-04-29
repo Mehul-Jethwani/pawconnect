@@ -165,7 +165,12 @@ exports.getEnquiryMessages = async (req, res) => {
 exports.addEnquiryMessage = async (req, res) => {
   try {
     const { id: enquiryId } = req.params;
-    const { text } = req.body;
+    const { message, text } = req.body;
+    const finalMessage = message || text;
+
+    if (!finalMessage) {
+      return res.status(400).json({ message: 'Message content is required' });
+    }
 
     const enquiry = await prisma.petEnquiry.findUnique({
       where: { id: enquiryId },
@@ -182,26 +187,26 @@ exports.addEnquiryMessage = async (req, res) => {
       return res.status(403).json({ message: 'Unauthorized' });
     }
 
-    const message = await prisma.enquiryMessage.create({
+    const messageRecord = await prisma.enquiryMessage.create({
       data: {
         enquiryId,
         senderRole: req.user.role,
-        message: text
+        message: finalMessage
       }
     });
 
-    // Also update the main enquiry's answered status if it's the store owner
+    // Also update the main enquiry's legacy 'answer' field if it's the store owner
     if (req.user.role === 'STORE_OWNER') {
       await prisma.petEnquiry.update({
         where: { id: enquiryId },
         data: {
-          answer: text, // Keep legacy field updated for compatibility
+          answer: finalMessage,
           answeredAt: new Date()
         }
       });
     }
 
-    res.status(201).json(message);
+    res.status(201).json(messageRecord);
   } catch (error) {
     console.error('Error adding enquiry message:', error);
     res.status(500).json({ message: 'Internal server error' });
